@@ -109,19 +109,19 @@ describe(requirement(40), () => {
   });
 });
 
-describe(requirement(41), () => {
+describe.only(requirement(41), () => {
   const people = createUserForAdm(lengthRules);
 
   test(`O avaliador tentará realizar o fluxo de cadastro com ${people.length} pessoas usuárias, validando-os no banco`, async () => {
     showPeopleList(people, global.__TESTDESC__);
-    
+
     expect(
       await action.admin.register(page, { database, people })
     ).toBeTruthy();
   });
 });
 
-describe(requirement(42), () => {
+describe.only(requirement(42), () => {
   const testUser = newUser({ passwordLen: lengthRules.password });
   testUser.role = Math.round(Math.random()) ? "seller" : "customer";
 
@@ -156,7 +156,7 @@ describe(requirement(43), () => {
 
   test(`O avaliador tentará realizar o fluxo de cadastro com ${people.length} pessoas usuárias e verificará se as mesmas aparecem na tabela`, async () => {
     showPeopleList(people, global.__TESTDESC__);
-    
+
     expect(
       await action.admin.register(page, { database, people })
     ).toBeTruthy();
@@ -178,7 +178,7 @@ describe(requirement(44), () => {
     .map((el,index)=> ({ listItem: index + 3, ...el  }));
 
   const excludeItens = forceExcludeItens(peopleList, 3);
-  
+
   const peopleToExclude = peopleList
     .filter((el) => excludeItens.includes(el.listItem));
 
@@ -189,7 +189,7 @@ describe(requirement(44), () => {
   peopleList.map(el => delete el.password && el);
   excludeItens.map(el => delete el.password && el);
   newPeopleList.map(el => delete el.password && el);
-  
+
   test(`O avaliador tentará realizar o fluxo de cadastro com ${people.length} pessoas usuárias e removerá ${peopleToExclude.length} validando na tabela`, async () => {
     showPeopleList(peopleList, requirement(44));
     showPeopleList(peopleToExclude, requirement(44), 'Pessoas que serão deletadas');
