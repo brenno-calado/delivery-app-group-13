@@ -1,3 +1,7 @@
+## Delivery App - Grupo 13
+
+![Demonstração do App](/delivery-demo.gif)
+
 ### Termos de acordo
 
 Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.
